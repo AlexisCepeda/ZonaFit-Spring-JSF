@@ -11,15 +11,29 @@
         <div class="card">
             <h:form id="forma-clientes">
                 <p:growl id="mensajes" showDetails="true"/>
-                <div clas="card">
+
+                <p:card class="card">
+                    <f:facet name="header">
+                        <div class="flex justify-content-center flex-wrap card-container green-container">
+                            <div class="flex align-items-center justify-content-center w-20rem h-4rem bg-green-300
+                                            font-bold text-gray-900 border-round m-2">
+                                <h3>Zona Fit (GYM)</h3>
+                            </div>
+                        </div>
+                    </f:facet>
+                </p:card>
+
+                <div class="card">
                     <p:menubar>
                         <p:menuitem value="Inicio" icon="pi pi-fw pi-user"
                                     update="forma-clientes:clientes-tabla"
-                                    actionListener="#{indexControlador.cargarDatos}"/>
+                                    actionListener="#{indexControlador.cargarDatos}"
+                                    styleClass="border-4 border-black shadow-5 p-3"/>
                         <p:menuitem value="Nuevo Cliente" icon="pi pi-fw pi-plus"
                                     actionListener="#{indexControlador.agregarCliente}"
                                     update=":forma-modal:cliente-ventana"
-                                    oncomplete="PF('ventanaModalCliente').show()"/>
+                                    oncomplete="PF('ventanaModalCliente').show()"
+                                    styleClass="border-4 border-black shadow-5 p-3"/>
                     </p:menubar>
                 </div>
 
@@ -27,32 +41,24 @@
                 <div class="card">
                     <p:dataTable value="#{indexControlador.clientes}" var="cliente"
                                  id="clientes-tabla" widgetVar="clientesTabla">
-                        <f:facet name="header">
-                            <div class="flex justify-content-center flex-wrap card-container yellow-container">
-                                <div class="flex align-items-center justify-content-center w-20rem h-4rem bg-yellow-500
-                                            font-bold text-gray-900 border-round m-2">
-                                    <h3>Zona Fit (GYM)</h3>
-                                </div>
-                            </div>
-                        </f:facet>
 
-                        <p:column headerText="Id">
+                        <p:column headerText="Id" styleClass="surface-200 p-1">
                             <h:outputText value="#{cliente.id}"/>
                         </p:column>
 
-                        <p:column headerText="Nombre">
+                        <p:column headerText="Nombre" styleClass="surface-200 p-1">
                             <h:outputText value="#{cliente.nombre}"/>
                         </p:column>
 
-                        <p:column headerText="Apellido">
+                        <p:column headerText="Apellido" styleClass="surface-200 p-1">
                             <h:outputText value="#{cliente.apellido}"/>
                         </p:column>
 
-                        <p:column headerText="Membresia">
+                        <p:column headerText="Membresia" styleClass="surface-200 p-1">
                             <h:outputText value="#{cliente.membresia}"/>
                         </p:column>
 
-                        <p:column>
+                        <p:column styleClass="surface-200 p-1">
                             <p:commandButton value="Editar" icon="pi pi-pencil"
                                              update=":forma-modal:cliente-ventana"
                                              process="@this"
@@ -60,11 +66,13 @@
                                              class="ui-button-primary"
                                              style="margin-right: .5rem">
                                 <f:setPropertyActionListener
-                                    value="#{cliente}"
-                                    target="#{indexControlador.clienteSeleccionado}"/>
+                                        value="#{cliente}"
+                                        target="#{indexControlador.clienteSeleccionado}"/>
                                 <p:resetInput target=":forma-modal:cliente-ventana"/>
                             </p:commandButton>
+                        </p:column>
 
+                        <p:column styleClass="surface-200 p-1">
                             <p:commandButton value="Eliminar" class="ui-button-danger"
                                              icon="pi pi-trash"
                                              process="@this"
@@ -74,7 +82,6 @@
                                     target="#{indexControlador.clienteSeleccionado}"/>
                             </p:commandButton>
                         </p:column>
-
                     </p:dataTable>
                 </div>
 
