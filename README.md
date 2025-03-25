@@ -8,5 +8,5 @@ Para el desarrollo se empleó Spring Boot. Se utilizó Maven como gestor de depe
 
 La interfaz de usuario (UI) fue desarrollada con JavaServer Faces (JSF) y la biblioteca de componentes PrimeFaces, complementándose con herramientas de HTML.
 
-Pantalla o GUI del sistema:
+Interfaz gráfica del sistema:
 ![Pantalla GUI](GUI.png)
